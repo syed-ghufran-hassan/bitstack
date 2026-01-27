@@ -72,8 +72,11 @@
 ;; Task templates
 (define-map task-templates
     uint ;; Template ID
-    { title: (string-ascii 50), description: (string-ascii 256), category: uint }
+    { title: (string-ascii 50), description: (string-ascii 256), category: uint, default-amount: uint }
 )
+
+;; Template nonce
+(define-data-var template-nonce uint u0)
 
 ;; Task milestones
 (define-map task-milestones
@@ -373,6 +376,35 @@
         (asserts! (is-eq (get status task) "completed") ERR-NOT-SUBMITTED)
         (map-set task-ratings task-id { rating: rating, reviewer: tx-sender })
         (ok true)
+    )
+)
+
+;; @desc Create a task template
+(define-public (create-template (title (string-ascii 50)) (description (string-ascii 256)) (category uint) (default-amount uint))
+    (let ((template-id (+ (var-get template-nonce) u1)))
+        (map-set task-templates template-id { 
+            title: title, 
+            description: description, 
+            category: category,
+            default-amount: default-amount
+        })
+        (var-set template-nonce template-id)
+        (print { event: "template-created", id: template-id })
+        (ok template-id)
+    )
+)
+
+;; @desc Create task from template
+(define-public (create-from-template (template-id uint) (amount uint) (deadline uint) (priority uint))
+    (let ((template (unwrap! (map-get? task-templates template-id) ERR-INVALID-ID)))
+        (create-task 
+            (get title template)
+            (get description template)
+            amount
+            deadline
+            priority
+            (get category template)
+        )
     )
 )
 
