@@ -74,6 +74,9 @@
 
         ;; Check deadline is in future
         (asserts! (> deadline stacks-block-height) ERR-PAST-DEADLINE)
+        
+        ;; Check deadline is at least 1 day (144 blocks) in future
+        (asserts! (>= deadline (+ stacks-block-height u144)) ERR-INVALID-DEADLINE)
 
         ;; Transfer STX from creator to contract
         (try! (stx-transfer? amount tx-sender (as-contract tx-sender)))
