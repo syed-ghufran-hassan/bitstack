@@ -16,6 +16,9 @@
 (define-constant ERR-NOT-SUBMITTED (err u110)) ;; Task has not been submitted
 (define-constant ERR-NOT-CREATOR (err u111)) ;; Caller is not the task creator
 (define-constant ERR-ALREADY-COMPLETED (err u112)) ;; Task is already completed
+(define-constant ERR-TASK-EXPIRED (err u113)) ;; Task has expired
+(define-constant ERR-TASK-DISPUTED (err u114)) ;; Task is disputed
+(define-constant ERR-INVALID-DEADLINE (err u115)) ;; Invalid deadline
 
 ;; Task status constants
 (define-constant TASK_OPEN u0)
