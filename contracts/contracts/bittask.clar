@@ -297,6 +297,27 @@
     )
 )
 
+;; @desc Cancel a task (creator only, refunds amount)
+;; @param task-id uint - ID of the task to cancel
+(define-public (cancel-task (task-id uint))
+    (let ((task (unwrap! (map-get? Tasks task-id) ERR-INVALID-ID)))
+        ;; Only creator can cancel
+        (asserts! (is-eq tx-sender (get creator task)) ERR-NOT-CREATOR)
+        
+        ;; Task must be open
+        (asserts! (is-eq (get status task) "open") ERR-NOT-OPEN)
+        
+        ;; Update task status to cancelled
+        (map-set Tasks task-id (merge task { status: "cancelled" }))
+        
+        ;; Refund STX to creator
+        (try! (as-contract (stx-transfer? (get amount task) tx-sender (get creator task))))
+        
+        (print { event: "cancelled", id: task-id, creator: tx-sender })
+        (ok true)
+    )
+)
+
 ;; Read-only functions
 
 (define-read-only (get-task (id uint))
