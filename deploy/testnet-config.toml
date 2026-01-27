@@ -1,0 +1,15 @@
+[network]
+name = "testnet"
+deployment_fee_rate = 10
+
+[accounts.deployer]
+mnemonic = "your testnet mnemonic here"
+balance = 100000000
+
+[contracts.bittask]
+path = "contracts/bittask.clar"
+clarity_version = 2
+
+[settings]
+batching = true
+epoch = "2.4"
