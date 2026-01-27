@@ -4,7 +4,7 @@ import { buildTransaction } from '../transaction-builder';
 export const approveWorkTransaction = (taskId: number) => {
   return buildTransaction(
     process.env.NEXT_PUBLIC_CONTRACT_ADDRESS!,
-    'bittask',
+    'bitstack',
     'approve-work',
     [uintCV(taskId)]
   );

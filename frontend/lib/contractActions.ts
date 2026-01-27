@@ -5,7 +5,7 @@ import { uintCV, stringAsciiCV, FungibleConditionCode } from '@stacks/transactio
 import { createSTXPostCondition } from '@stacks/transactions/dist/pc';
 
 const CONTRACT_ADDRESS = 'SP34HE2KF7SPKB8BD5GY39SG7M207FZPRXJS4NMY9';
-const CONTRACT_NAME = 'bittask';
+const CONTRACT_NAME = 'bitstack';
 
 // Use testnet for development, mainnet for production
 const network = process.env.NEXT_PUBLIC_STACKS_NETWORK === 'mainnet' ? STACKS_MAINNET : STACKS_TESTNET;

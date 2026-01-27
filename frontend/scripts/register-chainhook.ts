@@ -5,7 +5,7 @@ dotenv.config();
 
 // Configuration
 const CONTRACT_ADDRESS = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM'; // Replace with actual deployer if different
-const CONTRACT_NAME = 'bittask';
+const CONTRACT_NAME = 'bitstack';
 const WEBHOOK_URL = process.env.WEBHOOK_URL || 'http://localhost:3000/api/webhooks/chainhook';
 
 // To be reachable by Hiro's service, you need a public URL (e.g., via ngrok) when testing locally.
@@ -14,7 +14,7 @@ async function registerChainhook() {
     console.log(`Registering Chainhook for ${CONTRACT_NAME} on ${getChainhooksNetwork()}...`);
 
     const chainhook: ChainhookDefinition = {
-        name: 'BitTask Events',
+        name: 'BitStack Events',
         chain: 'stacks',
         network: getChainhooksNetwork() as 'mainnet' | 'testnet',
         version: '1',

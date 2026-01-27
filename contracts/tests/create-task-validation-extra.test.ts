@@ -9,7 +9,7 @@ describe('create-task additional validation', () => {
         const deadline = simnet.blockHeight + 10;
 
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii(""),
@@ -27,7 +27,7 @@ describe('create-task additional validation', () => {
         const deadline = simnet.blockHeight + 10;
 
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Title"),

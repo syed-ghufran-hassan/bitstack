@@ -10,7 +10,7 @@ describe('reclaim-expired negative paths', () => {
         const deadline = simnet.blockHeight + 1;
 
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task"),
@@ -24,7 +24,7 @@ describe('reclaim-expired negative paths', () => {
         simnet.mineEmptyBlocks(2);
 
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'reclaim-expired',
             [Cl.uint(1)],
             wallet2
@@ -37,7 +37,7 @@ describe('reclaim-expired negative paths', () => {
         const deadline = simnet.blockHeight + 1;
 
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task"),
@@ -50,7 +50,7 @@ describe('reclaim-expired negative paths', () => {
 
         // Accept task so it is no longer open
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'accept-task',
             [Cl.uint(1)],
             wallet2
@@ -59,7 +59,7 @@ describe('reclaim-expired negative paths', () => {
         simnet.mineEmptyBlocks(2);
 
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'reclaim-expired',
             [Cl.uint(1)],
             wallet1

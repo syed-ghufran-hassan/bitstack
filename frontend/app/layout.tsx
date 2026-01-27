@@ -6,8 +6,8 @@ import { Toaster } from "sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "BitTask",
-  description: "BitTask - The Decentralized Task Marketplace",
+  title: "BitStack",
+  description: "BitStack - The Decentralized Task Marketplace",
 };
 
 import { Providers } from "@/components/Providers";

@@ -12,7 +12,7 @@ describe('complete task lifecycle', () => {
         const amount = 5000;
 
         // Create task
-        const createResult = simnet.callPublicFn('bittask', 'create-task', [
+        const createResult = simnet.callPublicFn('bitstack', 'create-task', [
             Cl.stringAscii("Complete Task"),
             Cl.stringAscii("Full workflow test"),
             Cl.uint(amount),
@@ -23,7 +23,7 @@ describe('complete task lifecycle', () => {
 
         // Accept task
         const acceptResult = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'accept-task',
             [Cl.uint(1)],
             wallet2
@@ -32,7 +32,7 @@ describe('complete task lifecycle', () => {
 
         // Submit work
         const submitResult = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'submit-work',
             [Cl.uint(1), Cl.stringAscii("https://github.com/work")],
             wallet2
@@ -41,7 +41,7 @@ describe('complete task lifecycle', () => {
 
         // Approve work
         const approveResult = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'approve-work',
             [Cl.uint(1)],
             wallet1
@@ -49,7 +49,7 @@ describe('complete task lifecycle', () => {
         expect(approveResult.result).toBeOk(Cl.bool(true));
 
         // Verify final state
-        const task = simnet.callReadOnlyFn('bittask', 'get-task', [Cl.uint(1)], deployer);
+        const task = simnet.callReadOnlyFn('bitstack', 'get-task', [Cl.uint(1)], deployer);
         expect(task.result).toBeSome(expect.objectContaining({
             status: Cl.stringAscii("completed")
         }));

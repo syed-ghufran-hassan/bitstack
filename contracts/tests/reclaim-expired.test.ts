@@ -13,7 +13,7 @@ describe('reclaim-expired', () => {
 
         // Create task with near-future deadline
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Expiring Task"),
@@ -29,7 +29,7 @@ describe('reclaim-expired', () => {
 
         // Reclaim expired task
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'reclaim-expired',
             [Cl.uint(1)],
             wallet1
@@ -39,7 +39,7 @@ describe('reclaim-expired', () => {
 
         // Verify task is now completed
         const task = simnet.callReadOnlyFn(
-            'bittask',
+            'bitstack',
             'get-task',
             [Cl.uint(1)],
             deployer

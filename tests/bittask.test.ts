@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 
-describe('BitTask Contract Tests', () => {
+describe('BitStack Contract Tests', () => {
   it('should deploy contract successfully', () => {
     expect(true).toBe(true);
   });

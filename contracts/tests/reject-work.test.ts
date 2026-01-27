@@ -13,7 +13,7 @@ describe('reject-work', () => {
 
         // Create task
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task to Reject"),
@@ -26,7 +26,7 @@ describe('reject-work', () => {
 
         // Accept task
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'accept-task',
             [Cl.uint(1)],
             wallet2
@@ -34,7 +34,7 @@ describe('reject-work', () => {
 
         // Submit work
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'submit-work',
             [Cl.uint(1), Cl.stringAscii("link")],
             wallet2
@@ -42,7 +42,7 @@ describe('reject-work', () => {
 
         // Reject work (creator)
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'reject-work',
             [Cl.uint(1)],
             wallet1
@@ -52,7 +52,7 @@ describe('reject-work', () => {
 
         // Verify task is open again with cleared worker and submission
         const task = simnet.callReadOnlyFn(
-            'bittask',
+            'bitstack',
             'get-task',
             [Cl.uint(1)],
             deployer
@@ -72,7 +72,7 @@ describe('reject-work', () => {
 
         // Create task
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task to Reject"),
@@ -85,7 +85,7 @@ describe('reject-work', () => {
 
         // Accept task
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'accept-task',
             [Cl.uint(1)],
             wallet2
@@ -93,7 +93,7 @@ describe('reject-work', () => {
 
         // Submit work
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'submit-work',
             [Cl.uint(1), Cl.stringAscii("link")],
             wallet2
@@ -101,7 +101,7 @@ describe('reject-work', () => {
 
         // Try reject from worker wallet
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'reject-work',
             [Cl.uint(1)],
             wallet2
@@ -115,7 +115,7 @@ describe('reject-work', () => {
 
         // Create task
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task not submitted"),
@@ -128,7 +128,7 @@ describe('reject-work', () => {
 
         // Accept task but do not submit work
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'accept-task',
             [Cl.uint(1)],
             wallet2
@@ -136,7 +136,7 @@ describe('reject-work', () => {
 
         // Attempt to reject without submission
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'reject-work',
             [Cl.uint(1)],
             wallet1
@@ -150,7 +150,7 @@ describe('reject-work', () => {
 
         // Create task
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task third-party"),
@@ -163,7 +163,7 @@ describe('reject-work', () => {
 
         // Accept task
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'accept-task',
             [Cl.uint(1)],
             wallet2
@@ -171,7 +171,7 @@ describe('reject-work', () => {
 
         // Submit work
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'submit-work',
             [Cl.uint(1), Cl.stringAscii("link")],
             wallet2
@@ -179,7 +179,7 @@ describe('reject-work', () => {
 
         // Try reject from unrelated wallet
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'reject-work',
             [Cl.uint(1)],
             wallet3

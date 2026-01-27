@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# BitTask Deployment Script
+# BitStack Deployment Script
 set -e
 
-echo "🚀 Starting BitTask deployment..."
+echo "🚀 Starting BitStack deployment..."
 
 # Validate environment
 if [ -z "$STACKS_NETWORK" ]; then

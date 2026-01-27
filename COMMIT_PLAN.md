@@ -1,4 +1,4 @@
-# 5-Day Commit Plan for BitTask (350 Commits Total)
+# 5-Day Commit Plan for BitStack (350 Commits Total)
 
 **Period:** January 27-31, 2026  
 **Target:** 70 commits per day  
@@ -30,7 +30,7 @@
 
 ### Commit 1-3: Task Status Enhancements
 ```
-Create new task status constants in contracts/bittask.clar:
+Create new task status constants in contracts/bitstack.clar:
 - Add TASK_DISPUTED constant (u4)
 - Add TASK_CANCELLED constant (u5)
 - Add TASK_EXPIRED constant (u6)
@@ -38,7 +38,7 @@ Commit message: "feat(contract): add dispute and cancel task status"
 ```
 
 ```
-Add task dispute functionality in contracts/bittask.clar:
+Add task dispute functionality in contracts/bitstack.clar:
 - Create dispute-task function
 - Add dispute resolution logic
 - Update task status validation
@@ -46,7 +46,7 @@ Commit message: "feat(contract): implement task dispute mechanism"
 ```
 
 ```
-Add task cancellation functionality in contracts/bittask.clar:
+Add task cancellation functionality in contracts/bitstack.clar:
 - Create cancel-task function (creator only)
 - Add refund logic for cancelled tasks
 - Update status checks
@@ -55,7 +55,7 @@ Commit message: "feat(contract): add task cancellation with refund"
 
 ### Commit 4-6: Error Handling Improvements
 ```
-Enhance error constants in contracts/bittask.clar:
+Enhance error constants in contracts/bitstack.clar:
 - Add ERR_TASK_EXPIRED (err u106)
 - Add ERR_TASK_DISPUTED (err u107)
 - Add ERR_INVALID_DEADLINE (err u108)
@@ -71,7 +71,7 @@ Commit message: "feat(contract): add deadline validation logic"
 ```
 
 ```
-Implement task expiration check in contracts/bittask.clar:
+Implement task expiration check in contracts/bitstack.clar:
 - Add is-task-expired helper function
 - Update accept-task to check expiration
 - Add automatic status update
@@ -80,7 +80,7 @@ Commit message: "feat(contract): implement task expiration checks"
 
 ### Commit 7-9: Payment Enhancements
 ```
-Add partial payment support in contracts/bittask.clar:
+Add partial payment support in contracts/bitstack.clar:
 - Create partial-payment map
 - Add release-partial-payment function
 - Update payment tracking
@@ -96,7 +96,7 @@ Commit message: "feat(contract): enhance escrow balance tracking"
 ```
 
 ```
-Add payment history tracking in contracts/bittask.clar:
+Add payment history tracking in contracts/bitstack.clar:
 - Create payment-history map
 - Track all payment transactions
 - Add get-payment-history function
@@ -105,7 +105,7 @@ Commit message: "feat(contract): implement payment history tracking"
 
 ### Commit 10-12: Task Management
 ```
-Add task priority system in contracts/bittask.clar:
+Add task priority system in contracts/bitstack.clar:
 - Add priority field to task struct
 - Create PRIORITY_LOW, PRIORITY_NORMAL, PRIORITY_HIGH constants
 - Update create-task function
@@ -113,7 +113,7 @@ Commit message: "feat(contract): add task priority system"
 ```
 
 ```
-Implement task categories in contracts/bittask.clar:
+Implement task categories in contracts/bitstack.clar:
 - Add category field to task struct
 - Create category constants (DESIGN, DEV, MARKETING, etc.)
 - Update task creation
@@ -121,7 +121,7 @@ Commit message: "feat(contract): add task categorization system"
 ```
 
 ```
-Add task rating system in contracts/bittask.clar:
+Add task rating system in contracts/bitstack.clar:
 - Create task-ratings map
 - Add rate-task function
 - Implement rating validation
@@ -130,7 +130,7 @@ Commit message: "feat(contract): implement task rating system"
 
 ### Commit 13-15: Advanced Features
 ```
-Add task templates in contracts/bittask.clar:
+Add task templates in contracts/bitstack.clar:
 - Create task-templates map
 - Add create-template function
 - Implement template usage
@@ -138,7 +138,7 @@ Commit message: "feat(contract): add reusable task templates"
 ```
 
 ```
-Implement task milestones in contracts/bittask.clar:
+Implement task milestones in contracts/bitstack.clar:
 - Add milestones field to task struct
 - Create milestone tracking functions
 - Add milestone payment logic
@@ -146,7 +146,7 @@ Commit message: "feat(contract): add milestone-based payments"
 ```
 
 ```
-Add task collaboration features in contracts/bittask.clar:
+Add task collaboration features in contracts/bitstack.clar:
 - Create collaborators map
 - Add invite-collaborator function
 - Implement multi-worker tasks
@@ -447,7 +447,7 @@ Commit message: "feat(ui): update landing page"
 
 ### Commit 51-55: Contract Tests
 ```
-Create tests/bittask.test.ts:
+Create tests/bitstack.test.ts:
 - Add basic contract deployment test
 - Test task creation functionality
 - Include error handling tests
@@ -572,7 +572,7 @@ Commit message: "docs(guide): add deployment guide"
 
 ### Commit 66-68: Code Documentation
 ```
-Add inline documentation to contracts/bittask.clar:
+Add inline documentation to contracts/bitstack.clar:
 - Add function descriptions
 - Include parameter explanations
 - Add usage examples
@@ -621,7 +621,7 @@ Commit message: "deploy(script): add deployment automation"
 
 ### Commit 71-75: Advanced Task Features
 ```
-Add task templates system in contracts/bittask.clar:
+Add task templates system in contracts/bitstack.clar:
 - Create template-tasks map
 - Add create-from-template function
 - Include template validation
@@ -629,7 +629,7 @@ Commit message: "feat(contract): implement task templates"
 ```
 
 ```
-Add task dependencies in contracts/bittask.clar:
+Add task dependencies in contracts/bitstack.clar:
 - Create task-dependencies map
 - Add dependency validation
 - Include prerequisite checking
@@ -637,7 +637,7 @@ Commit message: "feat(contract): add task dependencies"
 ```
 
 ```
-Implement task batching in contracts/bittask.clar:
+Implement task batching in contracts/bitstack.clar:
 - Create batch-tasks map
 - Add batch creation function
 - Include batch payment logic
@@ -645,7 +645,7 @@ Commit message: "feat(contract): add task batching system"
 ```
 
 ```
-Add task revision system in contracts/bittask.clar:
+Add task revision system in contracts/bitstack.clar:
 - Create task-revisions map
 - Add request-revision function
 - Include revision tracking
@@ -653,7 +653,7 @@ Commit message: "feat(contract): implement task revisions"
 ```
 
 ```
-Add task bookmarking in contracts/bittask.clar:
+Add task bookmarking in contracts/bitstack.clar:
 - Create user-bookmarks map
 - Add bookmark/unbookmark functions
 - Include bookmark retrieval
@@ -662,7 +662,7 @@ Commit message: "feat(contract): add task bookmarking"
 
 ### Commit 76-80: Security Enhancements
 ```
-Add access control modifiers in contracts/bittask.clar:
+Add access control modifiers in contracts/bitstack.clar:
 - Create role-based permissions
 - Add admin functions
 - Include permission validation
@@ -670,7 +670,7 @@ Commit message: "feat(contract): add role-based access control"
 ```
 
 ```
-Implement rate limiting in contracts/bittask.clar:
+Implement rate limiting in contracts/bitstack.clar:
 - Add user action limits
 - Create cooldown periods
 - Include spam prevention
@@ -678,7 +678,7 @@ Commit message: "feat(contract): add rate limiting system"
 ```
 
 ```
-Add contract pause functionality in contracts/bittask.clar:
+Add contract pause functionality in contracts/bitstack.clar:
 - Create emergency pause mechanism
 - Add admin pause controls
 - Include pause state checks
@@ -686,7 +686,7 @@ Commit message: "feat(contract): add emergency pause system"
 ```
 
 ```
-Implement fund recovery in contracts/bittask.clar:
+Implement fund recovery in contracts/bitstack.clar:
 - Add emergency fund recovery
 - Create admin recovery functions
 - Include recovery validation
@@ -694,7 +694,7 @@ Commit message: "feat(contract): add emergency fund recovery"
 ```
 
 ```
-Add contract upgrade mechanism in contracts/bittask.clar:
+Add contract upgrade mechanism in contracts/bitstack.clar:
 - Create upgrade preparation
 - Add migration functions
 - Include version tracking
@@ -703,7 +703,7 @@ Commit message: "feat(contract): add upgrade mechanism"
 
 ### Commit 81-85: Performance Optimizations
 ```
-Optimize task storage in contracts/bittask.clar:
+Optimize task storage in contracts/bitstack.clar:
 - Reduce storage footprint
 - Optimize data structures
 - Include compression logic
@@ -711,7 +711,7 @@ Commit message: "perf(contract): optimize task storage"
 ```
 
 ```
-Add batch operations in contracts/bittask.clar:
+Add batch operations in contracts/bitstack.clar:
 - Create batch task operations
 - Add bulk processing
 - Include gas optimization
@@ -719,7 +719,7 @@ Commit message: "perf(contract): add batch operations"
 ```
 
 ```
-Implement lazy loading in contracts/bittask.clar:
+Implement lazy loading in contracts/bitstack.clar:
 - Add on-demand data loading
 - Create pagination helpers
 - Include memory optimization
@@ -727,7 +727,7 @@ Commit message: "perf(contract): implement lazy loading"
 ```
 
 ```
-Add caching layer in contracts/bittask.clar:
+Add caching layer in contracts/bitstack.clar:
 - Create result caching
 - Add cache invalidation
 - Include cache management
@@ -735,7 +735,7 @@ Commit message: "perf(contract): add caching layer"
 ```
 
 ```
-Optimize gas usage in contracts/bittask.clar:
+Optimize gas usage in contracts/bitstack.clar:
 - Reduce function complexity
 - Optimize loops and conditions
 - Include gas estimation

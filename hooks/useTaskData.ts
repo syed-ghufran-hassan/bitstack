@@ -11,7 +11,7 @@ export const useTaskData = (taskId?: number) => {
     try {
       const result = await contractCall(
         process.env.NEXT_PUBLIC_CONTRACT_ADDRESS!,
-        'bittask',
+        'bitstack',
         'get-task',
         [id]
       );

@@ -18,7 +18,7 @@ import { generateWallet } from '@stacks/wallet-sdk';
 const NETWORK_ENV = process.env.NETWORK || 'testnet';
 const MNEMONIC = process.env.MNEMONIC;
 const CONTRACT_ADDRESS = (process.env.CONTRACT_ADDRESS || '').split('.')[0];
-const CONTRACT_NAME = 'bittask';
+const CONTRACT_NAME = 'bitstack';
 
 if (!MNEMONIC) {
     console.error("Please set MNEMONIC in .env");

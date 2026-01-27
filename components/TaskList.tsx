@@ -26,7 +26,7 @@ export const TaskList: React.FC = () => {
     try {
       const nonce = await contractCall(
         process.env.NEXT_PUBLIC_CONTRACT_ADDRESS!,
-        'bittask',
+        'bitstack',
         'get-nonce'
       );
       
@@ -35,7 +35,7 @@ export const TaskList: React.FC = () => {
         taskPromises.push(
           contractCall(
             process.env.NEXT_PUBLIC_CONTRACT_ADDRESS!,
-            'bittask',
+            'bitstack',
             'get-task',
             [i]
           )

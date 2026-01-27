@@ -1,4 +1,4 @@
-# Getting Started with BitTask
+# Getting Started with BitStack
 
 ## Quick Start
 

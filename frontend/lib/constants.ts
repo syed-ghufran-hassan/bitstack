@@ -1,4 +1,4 @@
-export const APP_NAME = "BitTask";
+export const APP_NAME = "BitStack";
 export const APP_DESCRIPTION = "Decentralized Microgigs Marketplace";
 
 export const STX_DECIMALS = 6;
@@ -12,6 +12,6 @@ export const ROUTES = {
 };
 
 export const LINKS = {
-    GITHUB: 'https://github.com/Cyberking99/BitTask',
-    DOCS: 'https://docs.bittask.app',
+    GITHUB: 'https://github.com/Cyberking99/BitStack',
+    DOCS: 'https://docs.bitstack.app',
 };

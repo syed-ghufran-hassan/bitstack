@@ -5,7 +5,7 @@ export const userSession = new UserSession({ appConfig });
 
 export const connectWallet = () => {
   showConnect({
-    appDetails: { name: 'BitTask', icon: '/favicon.ico' },
+    appDetails: { name: 'BitStack', icon: '/favicon.ico' },
     onFinish: () => window.location.reload(),
     userSession,
   });

@@ -21,7 +21,7 @@
 - Transaction tracking for reject operations
 
 **Files:**
-- `contracts/contracts/bittask.clar` - reject-work function
+- `contracts/contracts/bitstack.clar` - reject-work function
 - `frontend/lib/contractActions.ts` - rejectWork function
 - `frontend/app/marketplace/[id]/page.tsx` - UI integration
 
@@ -33,7 +33,7 @@
 - Utilities for deadline calculations
 
 **Files:**
-- `contracts/contracts/bittask.clar` - reclaim-expired function
+- `contracts/contracts/bitstack.clar` - reclaim-expired function
 - `frontend/lib/taskUtils.ts` - Expiration utilities
 - `frontend/lib/contractActions.ts` - reclaimExpired function
 - `frontend/app/marketplace/[id]/page.tsx` - Expiration UI

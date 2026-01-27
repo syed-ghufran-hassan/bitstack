@@ -4,7 +4,7 @@ import { buildTransaction } from '../transaction-builder';
 export const disputeTaskTransaction = (taskId: number) => {
   return buildTransaction(
     process.env.NEXT_PUBLIC_CONTRACT_ADDRESS!,
-    'bittask',
+    'bitstack',
     'dispute-task',
     [uintCV(taskId)]
   );

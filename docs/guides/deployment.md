@@ -16,12 +16,12 @@
 
 2. **Deploy Contract**
    ```clarity
-   ::deploy_contract bittask
+   ::deploy_contract bitstack
    ```
 
 3. **Test Functions**
    ```clarity
-   (contract-call? .bittask create-task "Test Task" "Description" u1000000 u1000 u1 u0)
+   (contract-call? .bitstack create-task "Test Task" "Description" u1000000 u1000 u1 u0)
    ```
 
 ## Testnet Deployment

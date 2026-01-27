@@ -4,7 +4,7 @@ import { buildTransaction } from '../transaction-builder';
 export const submitWorkTransaction = (taskId: number, submission: string) => {
   return buildTransaction(
     process.env.NEXT_PUBLIC_CONTRACT_ADDRESS!,
-    'bittask',
+    'bitstack',
     'submit-work',
     [uintCV(taskId), stringAsciiCV(submission)]
   );

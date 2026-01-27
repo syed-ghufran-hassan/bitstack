@@ -62,9 +62,9 @@ export const bitcoinAdapter = new BitcoinAdapter({
 })
 
 export const metadata = {
-    name: 'BitTask',
-    description: 'BitTask - Task Management on Stacks',
-    url: 'https://bittask.app',
+    name: 'BitStack',
+    description: 'BitStack - Task Management on Stacks',
+    url: 'https://bitstack.app',
     icons: ['https://avatars.githubusercontent.com/u/179229932']
 }
 // Updated networks

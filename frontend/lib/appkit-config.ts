@@ -22,7 +22,7 @@ export const appKit = createAppKit({
   networks: [mainnet, sepolia],
   defaultNetwork: mainnet,
   metadata: {
-    name: 'BitTask',
+    name: 'BitStack',
     description: 'Decentralized Microgigs Marketplace on Stacks',
     url: typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000',
     icons: ['https://avatars.githubusercontent.com/u/37784886'],

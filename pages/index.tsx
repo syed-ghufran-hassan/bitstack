@@ -7,7 +7,7 @@ export default function Home() {
       <div className="px-4 py-6">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Welcome to BitTask
+            Welcome to BitStack
           </h1>
           <p className="text-xl text-gray-600 mb-8">
             Decentralized microgigs marketplace built on Stacks

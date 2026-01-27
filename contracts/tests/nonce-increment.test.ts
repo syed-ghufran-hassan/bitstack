@@ -10,19 +10,19 @@ describe('nonce increment behavior', () => {
         const deadline = simnet.blockHeight + 50;
 
         // Get initial nonce
-        let nonceResult = simnet.callReadOnlyFn('bittask', 'get-nonce', [], deployer);
+        let nonceResult = simnet.callReadOnlyFn('bitstack', 'get-nonce', [], deployer);
         const initialNonce = Number((nonceResult.result as any).value);
 
         // Create 3 tasks
         for (let i = 1; i <= 3; i++) {
-            simnet.callPublicFn('bittask', 'create-task', [
+            simnet.callPublicFn('bitstack', 'create-task', [
                 Cl.stringAscii(`Task ${i}`),
                 Cl.stringAscii(`Description ${i}`),
                 Cl.uint(1000 * i),
                 Cl.uint(deadline)
             ], wallet1);
 
-            nonceResult = simnet.callReadOnlyFn('bittask', 'get-nonce', [], deployer);
+            nonceResult = simnet.callReadOnlyFn('bitstack', 'get-nonce', [], deployer);
             expect(Number((nonceResult.result as any).value)).toBe(initialNonce + i);
         }
     });

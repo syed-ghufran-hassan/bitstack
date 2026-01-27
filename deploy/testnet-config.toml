@@ -6,8 +6,8 @@ deployment_fee_rate = 10
 mnemonic = "your testnet mnemonic here"
 balance = 100000000
 
-[contracts.bittask]
-path = "contracts/bittask.clar"
+[contracts.bitstack]
+path = "contracts/bitstack.clar"
 clarity_version = 2
 
 [settings]

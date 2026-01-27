@@ -18,7 +18,7 @@ export function Header() {
         <header className="sticky top-0 z-40 w-full border-b border-slate-200 bg-white/80 backdrop-blur-md dark:border-slate-800 dark:bg-slate-950/80">
             <div className="container flex h-16 items-center justify-between px-4 md:px-6">
                 <Link href="/" className="flex items-center gap-2">
-                    <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-50">BitTask</span>
+                    <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-50">BitStack</span>
                 </Link>
 
                 <div className="flex items-center gap-4">

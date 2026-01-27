@@ -49,7 +49,7 @@ export class StacksConnectProvider implements WalletProvider {
     return new Promise((resolve, reject) => {
       showConnect({
         appDetails: {
-          name: 'BitTask',
+          name: 'BitStack',
           icon: typeof window !== 'undefined' ? `${window.location.origin}/favicon.ico` : '',
         },
         redirectTo: '/',

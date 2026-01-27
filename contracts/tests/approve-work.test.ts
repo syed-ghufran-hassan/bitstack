@@ -12,19 +12,19 @@ describe('approve-work', () => {
         const deadline = simnet.blockHeight + 50;
 
         // Create task
-        simnet.callPublicFn('bittask', 'create-task', [
+        simnet.callPublicFn('bitstack', 'create-task', [
             Cl.stringAscii("Task"), Cl.stringAscii("Desc"), Cl.uint(1000), Cl.uint(deadline)
         ], wallet1);
 
         // Accept task
-        simnet.callPublicFn('bittask', 'accept-task', [Cl.uint(1)], wallet2);
+        simnet.callPublicFn('bitstack', 'accept-task', [Cl.uint(1)], wallet2);
 
         // Submit work
-        simnet.callPublicFn('bittask', 'submit-work', [Cl.uint(1), Cl.stringAscii("link")], wallet2);
+        simnet.callPublicFn('bitstack', 'submit-work', [Cl.uint(1), Cl.stringAscii("link")], wallet2);
 
         // Approve work (creator)
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'approve-work',
             [Cl.uint(1)],
             wallet1
@@ -33,7 +33,7 @@ describe('approve-work', () => {
         expect(result).toBeOk(Cl.bool(true));
 
         // Verify status
-        const task = simnet.callReadOnlyFn('bittask', 'get-task', [Cl.uint(1)], deployer);
+        const task = simnet.callReadOnlyFn('bitstack', 'get-task', [Cl.uint(1)], deployer);
         expect(task.result).toBeSome(expect.objectContaining({
             status: Cl.stringAscii("completed")
         }));
@@ -41,15 +41,15 @@ describe('approve-work', () => {
 
     it('should fail if work is not submitted', () => {
         const deadline = simnet.blockHeight + 50;
-        simnet.callPublicFn('bittask', 'create-task', [
+        simnet.callPublicFn('bitstack', 'create-task', [
             Cl.stringAscii("Task"), Cl.stringAscii("Desc"), Cl.uint(1000), Cl.uint(deadline)
         ], wallet1);
 
-        simnet.callPublicFn('bittask', 'accept-task', [Cl.uint(1)], wallet2);
+        simnet.callPublicFn('bitstack', 'accept-task', [Cl.uint(1)], wallet2);
 
         // Try approve without submission
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'approve-work',
             [Cl.uint(1)],
             wallet1
@@ -60,16 +60,16 @@ describe('approve-work', () => {
 
     it('should fail if caller is not the creator', () => {
         const deadline = simnet.blockHeight + 50;
-        simnet.callPublicFn('bittask', 'create-task', [
+        simnet.callPublicFn('bitstack', 'create-task', [
             Cl.stringAscii("Task"), Cl.stringAscii("Desc"), Cl.uint(1000), Cl.uint(deadline)
         ], wallet1);
 
-        simnet.callPublicFn('bittask', 'accept-task', [Cl.uint(1)], wallet2);
-        simnet.callPublicFn('bittask', 'submit-work', [Cl.uint(1), Cl.stringAscii("link")], wallet2);
+        simnet.callPublicFn('bitstack', 'accept-task', [Cl.uint(1)], wallet2);
+        simnet.callPublicFn('bitstack', 'submit-work', [Cl.uint(1), Cl.stringAscii("link")], wallet2);
 
         // Try approve with wallet2 (worker)
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'approve-work',
             [Cl.uint(1)],
             wallet2

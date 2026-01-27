@@ -1,10 +1,10 @@
-# BitTask Smart Contracts
+# BitStack Smart Contracts
 
-This directory contains the Clarity smart contracts for the BitTask platform.
+This directory contains the Clarity smart contracts for the BitStack platform.
 
 ## Contracts
 
-- `bittask.clar`: The main marketplace contract handling task creation, acceptance, submission, and approvals.
+- `bitstack.clar`: The main marketplace contract handling task creation, acceptance, submission, and approvals.
 
 ## Prerequisites
 

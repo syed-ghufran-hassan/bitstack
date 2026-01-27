@@ -8,7 +8,7 @@ describe('task deadline validation', () => {
     it('should fail when deadline equals current block height', () => {
         const currentHeight = simnet.blockHeight;
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task"),
@@ -25,7 +25,7 @@ describe('task deadline validation', () => {
     it('should succeed when deadline is one block in future', () => {
         const deadline = simnet.blockHeight + 1;
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task"),

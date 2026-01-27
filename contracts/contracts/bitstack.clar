@@ -1,4 +1,4 @@
-;; BitTask: Decentralized Microgigs Marketplace
+;; BitStack: Decentralized Microgigs Marketplace
 ;; Contract for managing tasks, escrow, and payments.
 
 ;; Constants

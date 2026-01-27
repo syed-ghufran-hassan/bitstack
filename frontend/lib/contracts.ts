@@ -3,7 +3,7 @@ import { fetchCallReadOnlyFunction, cvToValue, uintCV } from '@stacks/transactio
 
 const network = STACKS_MAINNET;
 const CONTRACT_ADDRESS = 'SP34HE2KF7SPKB8BD5GY39SG7M207FZPRXJS4NMY9';
-const CONTRACT_NAME = 'bittask';
+const CONTRACT_NAME = 'bitstack';
 
 export interface Task {
     id: number;

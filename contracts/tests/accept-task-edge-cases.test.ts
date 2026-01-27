@@ -8,7 +8,7 @@ const wallet2 = accounts.get("wallet_2")!;
 describe('accept-task edge cases', () => {
     it('should fail if task does not exist', () => {
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'accept-task',
             [Cl.uint(999)],
             wallet2
@@ -20,15 +20,15 @@ describe('accept-task edge cases', () => {
     it('should fail if task is already submitted', () => {
         const deadline = simnet.blockHeight + 50;
 
-        simnet.callPublicFn('bittask', 'create-task', [
+        simnet.callPublicFn('bitstack', 'create-task', [
             Cl.stringAscii("Task"), Cl.stringAscii("Desc"), Cl.uint(1000), Cl.uint(deadline)
         ], wallet1);
 
-        simnet.callPublicFn('bittask', 'accept-task', [Cl.uint(1)], wallet2);
-        simnet.callPublicFn('bittask', 'submit-work', [Cl.uint(1), Cl.stringAscii("link")], wallet2);
+        simnet.callPublicFn('bitstack', 'accept-task', [Cl.uint(1)], wallet2);
+        simnet.callPublicFn('bitstack', 'submit-work', [Cl.uint(1), Cl.stringAscii("link")], wallet2);
 
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'accept-task',
             [Cl.uint(1)],
             wallet2

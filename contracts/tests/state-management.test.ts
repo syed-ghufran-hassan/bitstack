@@ -13,7 +13,7 @@ describe('state-management', () => {
             const deadline = simnet.blockHeight + 50;
 
             simnet.callPublicFn(
-                'bittask',
+                'bitstack',
                 'create-task',
                 [
                     Cl.stringAscii("Task"),
@@ -26,7 +26,7 @@ describe('state-management', () => {
 
             // Accept task
             simnet.callPublicFn(
-                'bittask',
+                'bitstack',
                 'accept-task',
                 [Cl.uint(1)],
                 wallet2
@@ -34,7 +34,7 @@ describe('state-management', () => {
 
             // Verify task was accepted
             const task = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-task',
                 [Cl.uint(1)],
                 deployer
@@ -48,7 +48,7 @@ describe('state-management', () => {
             const deadline = simnet.blockHeight + 50;
 
             simnet.callPublicFn(
-                'bittask',
+                'bitstack',
                 'create-task',
                 [
                     Cl.stringAscii("Task"),
@@ -61,7 +61,7 @@ describe('state-management', () => {
 
             // Task should be open
             const task = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-task',
                 [Cl.uint(1)],
                 deployer
@@ -76,7 +76,7 @@ describe('state-management', () => {
 
             // Get initial nonce
             let nonce = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-nonce',
                 [],
                 deployer
@@ -85,7 +85,7 @@ describe('state-management', () => {
 
             // Create first task
             simnet.callPublicFn(
-                'bittask',
+                'bitstack',
                 'create-task',
                 [
                     Cl.stringAscii("Task 1"),
@@ -97,7 +97,7 @@ describe('state-management', () => {
             );
 
             nonce = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-nonce',
                 [],
                 deployer
@@ -106,7 +106,7 @@ describe('state-management', () => {
 
             // Create second task
             simnet.callPublicFn(
-                'bittask',
+                'bitstack',
                 'create-task',
                 [
                     Cl.stringAscii("Task 2"),
@@ -118,7 +118,7 @@ describe('state-management', () => {
             );
 
             nonce = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-nonce',
                 [],
                 deployer
@@ -132,7 +132,7 @@ describe('state-management', () => {
             // Create 5 tasks
             for (let i = 0; i < 5; i++) {
                 simnet.callPublicFn(
-                    'bittask',
+                    'bitstack',
                     'create-task',
                     [
                         Cl.stringAscii(`Task ${i + 1}`),
@@ -145,7 +145,7 @@ describe('state-management', () => {
             }
 
             const nonce = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-nonce',
                 [],
                 deployer
@@ -163,7 +163,7 @@ describe('state-management', () => {
             const amount = 5000;
 
             simnet.callPublicFn(
-                'bittask',
+                'bitstack',
                 'create-task',
                 [
                     Cl.stringAscii(title),
@@ -176,7 +176,7 @@ describe('state-management', () => {
 
             // Get task before acceptance
             let task = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-task',
                 [Cl.uint(1)],
                 deployer
@@ -185,7 +185,7 @@ describe('state-management', () => {
 
             // Accept task
             simnet.callPublicFn(
-                'bittask',
+                'bitstack',
                 'accept-task',
                 [Cl.uint(1)],
                 wallet2
@@ -193,7 +193,7 @@ describe('state-management', () => {
 
             // Get task after acceptance
             task = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-task',
                 [Cl.uint(1)],
                 deployer
@@ -207,7 +207,7 @@ describe('state-management', () => {
             // Create 3 tasks
             for (let i = 0; i < 3; i++) {
                 simnet.callPublicFn(
-                    'bittask',
+                    'bitstack',
                     'create-task',
                     [
                         Cl.stringAscii(`Task ${i + 1}`),
@@ -221,7 +221,7 @@ describe('state-management', () => {
 
             // Accept task 2
             simnet.callPublicFn(
-                'bittask',
+                'bitstack',
                 'accept-task',
                 [Cl.uint(2)],
                 wallet2
@@ -229,19 +229,19 @@ describe('state-management', () => {
 
             // Verify each task has correct state
             const task1 = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-task',
                 [Cl.uint(1)],
                 deployer
             );
             const task2 = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-task',
                 [Cl.uint(2)],
                 deployer
             );
             const task3 = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-task',
                 [Cl.uint(3)],
                 deployer
@@ -258,7 +258,7 @@ describe('state-management', () => {
             const deadline = simnet.blockHeight + 50;
 
             simnet.callPublicFn(
-                'bittask',
+                'bitstack',
                 'create-task',
                 [
                     Cl.stringAscii("Task 1"),
@@ -270,7 +270,7 @@ describe('state-management', () => {
             );
 
             simnet.callPublicFn(
-                'bittask',
+                'bitstack',
                 'create-task',
                 [
                     Cl.stringAscii("Task 2"),
@@ -282,14 +282,14 @@ describe('state-management', () => {
             );
 
             const task1 = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-task',
                 [Cl.uint(1)],
                 deployer
             );
 
             const task2 = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-task',
                 [Cl.uint(2)],
                 deployer
@@ -301,7 +301,7 @@ describe('state-management', () => {
 
         it('should return none for non-existent task', () => {
             const task = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-task',
                 [Cl.uint(999)],
                 deployer
@@ -317,7 +317,7 @@ describe('state-management', () => {
             const amount = 7500;
 
             simnet.callPublicFn(
-                'bittask',
+                'bitstack',
                 'create-task',
                 [
                     Cl.stringAscii(title),
@@ -329,7 +329,7 @@ describe('state-management', () => {
             );
 
             const task = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-task',
                 [Cl.uint(1)],
                 deployer
@@ -346,7 +346,7 @@ describe('state-management', () => {
             // Create 3 tasks
             for (let i = 0; i < 3; i++) {
                 simnet.callPublicFn(
-                    'bittask',
+                    'bitstack',
                     'create-task',
                     [
                         Cl.stringAscii(`Task ${i + 1}`),
@@ -359,7 +359,7 @@ describe('state-management', () => {
             }
 
             const tasks = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-tasks',
                 [Cl.list([Cl.uint(1), Cl.uint(2), Cl.uint(3)])],
                 deployer
@@ -372,7 +372,7 @@ describe('state-management', () => {
             const deadline = simnet.blockHeight + 50;
 
             simnet.callPublicFn(
-                'bittask',
+                'bitstack',
                 'create-task',
                 [
                     Cl.stringAscii("Task 1"),
@@ -384,7 +384,7 @@ describe('state-management', () => {
             );
 
             const tasks = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-tasks',
                 [Cl.list([Cl.uint(1), Cl.uint(999)])],
                 deployer
@@ -395,7 +395,7 @@ describe('state-management', () => {
 
         it('should return empty list for empty input', () => {
             const tasks = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-tasks',
                 [Cl.list([])],
                 deployer
@@ -411,7 +411,7 @@ describe('state-management', () => {
 
             // Create tasks from different wallets
             simnet.callPublicFn(
-                'bittask',
+                'bitstack',
                 'create-task',
                 [
                     Cl.stringAscii("Task from Wallet1"),
@@ -423,7 +423,7 @@ describe('state-management', () => {
             );
 
             simnet.callPublicFn(
-                'bittask',
+                'bitstack',
                 'create-task',
                 [
                     Cl.stringAscii("Task from Wallet2"),
@@ -435,7 +435,7 @@ describe('state-management', () => {
             );
 
             simnet.callPublicFn(
-                'bittask',
+                'bitstack',
                 'create-task',
                 [
                     Cl.stringAscii("Task from Wallet3"),
@@ -448,19 +448,19 @@ describe('state-management', () => {
 
             // Verify all tasks exist
             const task1 = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-task',
                 [Cl.uint(1)],
                 deployer
             );
             const task2 = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-task',
                 [Cl.uint(2)],
                 deployer
             );
             const task3 = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-task',
                 [Cl.uint(3)],
                 deployer
@@ -477,7 +477,7 @@ describe('state-management', () => {
             // Create 3 tasks
             for (let i = 0; i < 3; i++) {
                 simnet.callPublicFn(
-                    'bittask',
+                    'bitstack',
                     'create-task',
                     [
                         Cl.stringAscii(`Task ${i + 1}`),
@@ -491,21 +491,21 @@ describe('state-management', () => {
 
             // Accept all tasks by different workers
             simnet.callPublicFn(
-                'bittask',
+                'bitstack',
                 'accept-task',
                 [Cl.uint(1)],
                 wallet2
             );
 
             simnet.callPublicFn(
-                'bittask',
+                'bitstack',
                 'accept-task',
                 [Cl.uint(2)],
                 wallet3
             );
 
             simnet.callPublicFn(
-                'bittask',
+                'bitstack',
                 'accept-task',
                 [Cl.uint(3)],
                 wallet2
@@ -513,19 +513,19 @@ describe('state-management', () => {
 
             // Verify all tasks are in-progress
             const task1 = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-task',
                 [Cl.uint(1)],
                 deployer
             );
             const task2 = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-task',
                 [Cl.uint(2)],
                 deployer
             );
             const task3 = simnet.callReadOnlyFn(
-                'bittask',
+                'bitstack',
                 'get-task',
                 [Cl.uint(3)],
                 deployer

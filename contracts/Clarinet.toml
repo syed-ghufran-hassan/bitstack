@@ -1,12 +1,12 @@
 [project]
-name = "bittask"
+name = "bitstack"
 description = ""
 authors = []
 telemetry = false
 cache_dir = "./.cache"
 
-[contracts.bittask]
-path = "contracts/bittask.clar"
+[contracts.bitstack]
+path = "contracts/bitstack.clar"
 epoch = "3.0"
 
 [repl.analysis]

@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-BitTask demonstrates **deep understanding and implementation** of wallet SDK architectures through:
+BitStack demonstrates **deep understanding and implementation** of wallet SDK architectures through:
 
 1. **Production Implementation**: Using @stacks/connect (official Stacks SDK)
 2. **Abstraction Layer**: Unified interface supporting multiple wallet providers

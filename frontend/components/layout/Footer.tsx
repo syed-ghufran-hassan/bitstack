@@ -17,7 +17,7 @@ export function Footer() {
                     </a>
                     . The source code is available on{" "}
                     <a
-                        href="https://github.com/Cyberking99/BitTask"
+                        href="https://github.com/Cyberking99/BitStack"
                         target="_blank"
                         rel="noreferrer"
                         className="font-medium underline underline-offset-4"

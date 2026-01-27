@@ -1,4 +1,4 @@
-# BitTask Frontend
+# BitStack Frontend
 
 The frontend is a Next.js application built with Tailwind CSS and Wagmi/Stacks.js for blockchain interaction.
 

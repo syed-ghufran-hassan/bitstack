@@ -4,7 +4,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const BASE_URL = 'https://bittask.app';
+const BASE_URL = 'https://bitstack.app';
 const PAGES_DIR = path.join(process.cwd(), 'app');
 
 console.log(`Generating sitemap for ${BASE_URL}...`);

@@ -35,7 +35,7 @@ import { showConnect, openContractCall } from '@stacks/connect';
 
 // Connect wallet
 await showConnect({
-  appDetails: { name: 'BitTask' },
+  appDetails: { name: 'BitStack' },
   userSession,
   onFinish: () => { /* connected */ }
 });

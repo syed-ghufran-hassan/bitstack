@@ -11,7 +11,7 @@ describe('get-tasks batch retrieval', () => {
 
         // Create 5 tasks
         for (let i = 1; i <= 5; i++) {
-            simnet.callPublicFn('bittask', 'create-task', [
+            simnet.callPublicFn('bitstack', 'create-task', [
                 Cl.stringAscii(`Task ${i}`),
                 Cl.stringAscii(`Description ${i}`),
                 Cl.uint(1000 * i),
@@ -21,7 +21,7 @@ describe('get-tasks batch retrieval', () => {
 
         // Retrieve tasks 2, 4, and 1
         const tasksResult = simnet.callReadOnlyFn(
-            'bittask',
+            'bitstack',
             'get-tasks',
             [Cl.list([Cl.uint(2), Cl.uint(4), Cl.uint(1)])],
             deployer

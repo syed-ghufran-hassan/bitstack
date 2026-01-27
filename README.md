@@ -1,6 +1,6 @@
-# BitTask - Decentralized Microgigs Marketplace
+# BitStack - Decentralized Microgigs Marketplace
 
-**BitTask** is a decentralized tasks marketplace built on **Stacks (Bitcoin L2)**. It enables users to post tasks with rewards paid in STX or sBTC, and allows workers to complete these tasks and get paid trustlessly via smart contracts.
+**BitStack** is a decentralized tasks marketplace built on **Stacks (Bitcoin L2)**. It enables users to post tasks with rewards paid in STX or sBTC, and allows workers to complete these tasks and get paid trustlessly via smart contracts.
 
 ![Stacks](https://img.shields.io/badge/Stacks-Blockchain-blueviolet?style=flat-square) ![Clarity](https://img.shields.io/badge/Language-Clarity-orange?style=flat-square) ![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
 
@@ -17,7 +17,7 @@
 
 ## 🏗 System Architecture
 
-The project consists of a Clarity smart contract (`bittask`) that manages the state of all tasks and holds funds in escrow. Users interact with the contract directly or through a Next.js frontend application.
+The project consists of a Clarity smart contract (`bitstack`) that manages the state of all tasks and holds funds in escrow. Users interact with the contract directly or through a Next.js frontend application.
 
 ```mermaid
 graph TD
@@ -25,7 +25,7 @@ graph TD
     Worker[Freelancer]
     
     subgraph Stacks_Blockchain [Stacks Blockchain]
-        Contract[bittask.clar]
+        Contract[bitstack.clar]
         State[Contract State]
     end
     
@@ -106,8 +106,8 @@ Ensure you have the following installed:
 
 1.  **Clone the repository**
     ```bash
-    git clone https://github.com/Cyberking99/BitTask.git
-    cd BitTask
+    git clone https://github.com/Cyberking99/BitStack.git
+    cd BitStack
     ```
 
 2.  **Install Frontend Dependencies**

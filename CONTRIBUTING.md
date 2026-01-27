@@ -1,6 +1,6 @@
-# Contributing to BitTask
+# Contributing to BitStack
 
-We welcome contributions to BitTask! Please follow these guidelines to ensure a smooth collaboration process.
+We welcome contributions to BitStack! Please follow these guidelines to ensure a smooth collaboration process.
 
 ## Development Process
 

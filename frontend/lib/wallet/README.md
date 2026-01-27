@@ -2,7 +2,7 @@
 
 ## Overview
 
-BitTask uses a **wallet abstraction layer** that supports multiple wallet SDKs through a unified interface. This architecture demonstrates deep understanding of wallet integration patterns and allows for future flexibility.
+BitStack uses a **wallet abstraction layer** that supports multiple wallet SDKs through a unified interface. This architecture demonstrates deep understanding of wallet integration patterns and allows for future flexibility.
 
 ## Architecture
 
@@ -92,7 +92,7 @@ const account = await registry.getAccount();
 // Sign transaction
 const result = await registry.signTransaction({
   contractAddress: 'SP...',
-  contractName: 'bittask',
+  contractName: 'bitstack',
   functionName: 'create-task',
   functionArgs: [...],
   network: STACKS_NETWORKS.testnet,

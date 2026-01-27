@@ -6,12 +6,12 @@ const accounts = simnet.getAccounts();
 const deployer = accounts.get("deployer")!;
 const wallet1 = accounts.get("wallet_1")!;
 
-describe('bittask contract', () => {
+describe('bitstack contract', () => {
     it('ensure that user can create a task', () => {
         const amount = 1000;
         const deadline = 50;
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Test Task"),
@@ -27,7 +27,7 @@ describe('bittask contract', () => {
     it('ensure that task creation fails with zero amount', () => {
         const amount = 0;
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Test Task"),
@@ -43,7 +43,7 @@ describe('bittask contract', () => {
     it('ensure that task creation fails with past deadline', () => {
         const amount = 1000;
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Test Task"),
@@ -61,7 +61,7 @@ describe('bittask contract', () => {
         const deadline = simnet.blockHeight + 100;
 
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task 2"),
@@ -73,7 +73,7 @@ describe('bittask contract', () => {
         );
 
         const task = simnet.callReadOnlyFn(
-            'bittask',
+            'bitstack',
             'get-task',
             [Cl.uint(1)],
             deployer
@@ -99,7 +99,7 @@ describe('bittask contract', () => {
 
         // Create task
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task 3"),
@@ -115,7 +115,7 @@ describe('bittask contract', () => {
 
         // Accept task
         const acceptResult = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'accept-task',
             [taskId],
             worker
@@ -123,7 +123,7 @@ describe('bittask contract', () => {
         expect(acceptResult.result).toBeOk(Cl.bool(true));
 
         // Verify status is in-progress
-        let task = simnet.callReadOnlyFn('bittask', 'get-task', [taskId], deployer);
+        let task = simnet.callReadOnlyFn('bitstack', 'get-task', [taskId], deployer);
         expect(task.result).toBeSome(Cl.tuple({
             title: Cl.stringAscii("Task 3"),
             description: Cl.stringAscii("Desc 3"),
@@ -139,7 +139,7 @@ describe('bittask contract', () => {
         // Submit work
         const submission = "https://github.com/my-pr";
         const submitResult = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'submit-work',
             [taskId, Cl.stringAscii(submission)],
             worker
@@ -147,7 +147,7 @@ describe('bittask contract', () => {
         expect(submitResult.result).toBeOk(Cl.bool(true));
 
         // Verify status is submitted
-        task = simnet.callReadOnlyFn('bittask', 'get-task', [taskId], deployer);
+        task = simnet.callReadOnlyFn('bitstack', 'get-task', [taskId], deployer);
         expect(task.result).toBeSome(Cl.tuple({
             title: Cl.stringAscii("Task 3"),
             description: Cl.stringAscii("Desc 3"),
@@ -167,7 +167,7 @@ describe('bittask contract', () => {
 
         // Create Task 1
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task 1"),
@@ -181,7 +181,7 @@ describe('bittask contract', () => {
 
         // Create Task 2
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task 2"),
@@ -195,7 +195,7 @@ describe('bittask contract', () => {
 
         // Fetch both tasks and a non-existent one
         const tasks = simnet.callReadOnlyFn(
-            'bittask',
+            'bitstack',
             'get-tasks',
             [Cl.list([Cl.uint(1), Cl.uint(2), Cl.uint(99)])], // 99 does not exist
             deployer
@@ -240,7 +240,7 @@ describe('bittask contract', () => {
 
         // Create Task
         const createResult = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task to Accept"),
@@ -259,7 +259,7 @@ describe('bittask contract', () => {
 
         // Accept Task
         const result = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'accept-task',
             [Cl.uint(1)],
             user2
@@ -268,7 +268,7 @@ describe('bittask contract', () => {
 
         // Verify Task Status
         const task = simnet.callReadOnlyFn(
-            'bittask',
+            'bitstack',
             'get-task',
             [Cl.uint(1)],
             deployer
@@ -293,7 +293,7 @@ describe('bittask contract', () => {
 
         // Create Task
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Self Accept Task"),
@@ -306,7 +306,7 @@ describe('bittask contract', () => {
 
         // Try to Accept Task as Creator
         const result = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'accept-task',
             [Cl.uint(1)],
             wallet1
@@ -322,7 +322,7 @@ describe('bittask contract', () => {
 
         // Create Task
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Double Accept Task"),
@@ -335,7 +335,7 @@ describe('bittask contract', () => {
 
         // Accept Task (User 2)
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'accept-task',
             [Cl.uint(1)],
             user2
@@ -343,7 +343,7 @@ describe('bittask contract', () => {
 
         // Try to Accept Task Again (User 3)
         const result = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'accept-task',
             [Cl.uint(1)],
             user3

@@ -66,7 +66,7 @@ export function StacksWalletProvider({ children }: { children: ReactNode }) {
     try {
       await showConnect({
         appDetails: {
-          name: 'BitTask',
+          name: 'BitStack',
           icon: typeof window !== 'undefined' ? `${window.location.origin}/favicon.ico` : '',
         },
         redirectTo: '/',

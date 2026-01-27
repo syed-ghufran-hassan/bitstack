@@ -12,7 +12,7 @@ describe('create-task', () => {
         const deadline = simnet.blockHeight + 50;
 
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Test Task"),
@@ -31,7 +31,7 @@ describe('create-task', () => {
         const deadline = simnet.blockHeight + 100;
 
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task Title"),
@@ -43,7 +43,7 @@ describe('create-task', () => {
         );
 
         const task = simnet.callReadOnlyFn(
-            'bittask',
+            'bitstack',
             'get-task',
             [Cl.uint(1)],
             deployer
@@ -66,7 +66,7 @@ describe('create-task', () => {
 
         // Create first task
         const result1 = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task 1"),
@@ -80,7 +80,7 @@ describe('create-task', () => {
 
         // Create second task
         const result2 = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task 2"),
@@ -94,7 +94,7 @@ describe('create-task', () => {
 
         // Create third task
         const result3 = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task 3"),
@@ -111,7 +111,7 @@ describe('create-task', () => {
         const deadline = simnet.blockHeight + 50;
 
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Open Task"),
@@ -123,7 +123,7 @@ describe('create-task', () => {
         );
 
         const task = simnet.callReadOnlyFn(
-            'bittask',
+            'bitstack',
             'get-task',
             [Cl.uint(1)],
             deployer
@@ -136,7 +136,7 @@ describe('create-task', () => {
         const deadline = simnet.blockHeight + 50;
 
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task"),
@@ -148,7 +148,7 @@ describe('create-task', () => {
         );
 
         const task = simnet.callReadOnlyFn(
-            'bittask',
+            'bitstack',
             'get-task',
             [Cl.uint(1)],
             deployer
@@ -161,7 +161,7 @@ describe('create-task', () => {
         const deadline = simnet.blockHeight + 50;
 
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Creator Test"),
@@ -173,7 +173,7 @@ describe('create-task', () => {
         );
 
         const task = simnet.callReadOnlyFn(
-            'bittask',
+            'bitstack',
             'get-task',
             [Cl.uint(1)],
             deployer
@@ -185,7 +185,7 @@ describe('create-task', () => {
     // Error cases
     it('should fail with zero amount', () => {
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Zero Amount Task"),
@@ -202,7 +202,7 @@ describe('create-task', () => {
     it('should fail with past deadline', () => {
         // Create a task first to establish block height
         simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Temp"),
@@ -215,7 +215,7 @@ describe('create-task', () => {
 
         const pastDeadline = simnet.blockHeight - 1;
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Past Deadline"),
@@ -231,7 +231,7 @@ describe('create-task', () => {
 
     it('should fail with deadline at current block height', () => {
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Current Block Deadline"),
@@ -247,7 +247,7 @@ describe('create-task', () => {
 
     it('should fail with empty title', () => {
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii(""),
@@ -263,7 +263,7 @@ describe('create-task', () => {
 
     it('should fail with empty description', () => {
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task Title"),
@@ -280,7 +280,7 @@ describe('create-task', () => {
     // Edge cases
     it('should accept minimum valid amount (u1)', () => {
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Minimum Amount"),
@@ -297,7 +297,7 @@ describe('create-task', () => {
     it('should accept very large amount', () => {
         const largeAmount = 999999999999;
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Large Amount"),
@@ -314,7 +314,7 @@ describe('create-task', () => {
     it('should accept deadline exactly at block height + 2', () => {
         const deadline = simnet.blockHeight + 2;
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Near Deadline"),
@@ -331,7 +331,7 @@ describe('create-task', () => {
     it('should accept maximum length title (50 chars)', () => {
         const maxTitle = "a".repeat(50);
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii(maxTitle),
@@ -348,7 +348,7 @@ describe('create-task', () => {
     it('should accept maximum length description (256 chars)', () => {
         const maxDescription = "a".repeat(256);
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Title"),
@@ -366,7 +366,7 @@ describe('create-task', () => {
         const deadline = simnet.blockHeight + 50;
 
         const result1 = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task 1"),
@@ -379,7 +379,7 @@ describe('create-task', () => {
         expect(result1.result).toBeOk(Cl.uint(1));
 
         const result2 = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task 2"),
@@ -396,7 +396,7 @@ describe('create-task', () => {
         const deadline = simnet.blockHeight + 50;
 
         const result1 = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task 1"),
@@ -409,7 +409,7 @@ describe('create-task', () => {
         expect(result1.result).toBeOk(Cl.uint(1));
 
         const result2 = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Task 2"),
@@ -427,7 +427,7 @@ describe('create-task', () => {
         const poorWallet = "ST1SJ3DTE5DN7X54YDH5D64R3BCB6A2AG2ZQ8YPD5";
 
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Poor Task"),

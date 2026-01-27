@@ -17,7 +17,7 @@ const network = process.env.NEXT_PUBLIC_STACKS_NETWORK === 'mainnet' ? STACKS_MA
 const API_URL = network.coreApiUrl;
 
 // Store transactions in localStorage for persistence
-const STORAGE_KEY = 'bittask_transactions';
+const STORAGE_KEY = 'bitstack_transactions';
 
 export function useTransactionTracker() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);

@@ -2,7 +2,7 @@
 
 ## Current Implementation: Stacks Connect
 
-BitTask uses **@stacks/connect** for wallet integration, which is the official and recommended way to connect Stacks wallets (Leather, Xverse) to dApps.
+BitStack uses **@stacks/connect** for wallet integration, which is the official and recommended way to connect Stacks wallets (Leather, Xverse) to dApps.
 
 ### Why @stacks/connect instead of Reown AppKit/WalletKit?
 
@@ -14,7 +14,7 @@ BitTask uses **@stacks/connect** for wallet integration, which is the official a
 - ✅ Cosmos
 - ❌ **Stacks** (not supported)
 
-Since BitTask is built on the **Stacks blockchain**, we use **@stacks/connect**, which:
+Since BitStack is built on the **Stacks blockchain**, we use **@stacks/connect**, which:
 - ✅ Is the official Stacks wallet connection library
 - ✅ Works seamlessly with Leather (formerly Hiro Wallet) and Xverse
 - ✅ Provides secure transaction signing

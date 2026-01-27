@@ -1,8 +1,8 @@
-# BitTask System Architecture
+# BitStack System Architecture
 
 ## 1. High-Level Overview
 
-BitTask is a decentralized microgigs marketplace designed to be **trustless**, **secure**, and **censorship-resistant**. It leverages the Stacks blockchain (Bitcoin L2) for value settlement and smart contract logic, while utilizing off-chain storage (IPFS/Arweave) for heavy data to maintain efficiency.
+BitStack is a decentralized microgigs marketplace designed to be **trustless**, **secure**, and **censorship-resistant**. It leverages the Stacks blockchain (Bitcoin L2) for value settlement and smart contract logic, while utilizing off-chain storage (IPFS/Arweave) for heavy data to maintain efficiency.
 
 ## 2. On-Chain vs. Off-Chain Responsibilities
 
@@ -10,7 +10,7 @@ To optimize for cost and speed while maintaining security, we separate concerns:
 
 | Layer | Component | Responsibilities | Data Stored |
 | :--- | :--- | :--- | :--- |
-| **On-Chain** | **Stacks Smart Contract** (`bittask.clar`) | • Escrow logic (holding STX)<br>• Task state management<br>• Access control (Creator/Worker)<br>• Dispute resolution triggers<br>• Payment settlement | • Task ID<br>• Creator/Worker Principals<br>• Reward Amount<br>• Status (`Open`, `InProgress`, `Submitted`, `Done`, `Disputed`)<br>• Content Hash (link to off-chain data) |
+| **On-Chain** | **Stacks Smart Contract** (`bitstack.clar`) | • Escrow logic (holding STX)<br>• Task state management<br>• Access control (Creator/Worker)<br>• Dispute resolution triggers<br>• Payment settlement | • Task ID<br>• Creator/Worker Principals<br>• Reward Amount<br>• Status (`Open`, `InProgress`, `Submitted`, `Done`, `Disputed`)<br>• Content Hash (link to off-chain data) |
 | **Off-Chain** | **Frontend / Indexer** | • User Interface (Next.js)<br>• Data Aggregation<br>• File Storage (IPFS)<br>• Notification Services | • Task Title & Description<br>• Images/Files (Proof of work)<br>• User Profiles (optional)<br>• Category/Tags |
 
 ## 3. Smart Contract Design

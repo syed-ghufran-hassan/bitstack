@@ -8,7 +8,7 @@ describe('task amount boundaries', () => {
     it('should accept minimum amount of 1 micro-STX', () => {
         const deadline = simnet.blockHeight + 50;
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Min Amount Task"),
@@ -26,7 +26,7 @@ describe('task amount boundaries', () => {
         const deadline = simnet.blockHeight + 50;
         const largeAmount = 1000000000; // 1 billion micro-STX
         const { result } = simnet.callPublicFn(
-            'bittask',
+            'bitstack',
             'create-task',
             [
                 Cl.stringAscii("Large Amount Task"),
