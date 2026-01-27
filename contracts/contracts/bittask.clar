@@ -277,6 +277,26 @@
     )
 )
 
+;; @desc Dispute a task (worker or creator can dispute)
+;; @param task-id uint - ID of the task to dispute
+(define-public (dispute-task (task-id uint))
+    (let ((task (unwrap! (map-get? Tasks task-id) ERR-INVALID-ID)))
+        ;; Only worker or creator can dispute
+        (asserts! (or (is-eq tx-sender (get creator task))
+                     (is-eq (some tx-sender) (get worker task))) ERR-UNAUTHORIZED)
+        
+        ;; Task must be in-progress or submitted
+        (asserts! (or (is-eq (get status task) "in-progress")
+                     (is-eq (get status task) "submitted")) ERR-NOT-IN-PROGRESS)
+        
+        ;; Update task status to disputed
+        (map-set Tasks task-id (merge task { status: "disputed" }))
+        
+        (print { event: "disputed", id: task-id, disputant: tx-sender })
+        (ok true)
+    )
+)
+
 ;; Read-only functions
 
 (define-read-only (get-task (id uint))
