@@ -99,6 +99,8 @@
         (description (string-ascii 256))
         (amount uint)
         (deadline uint)
+        (priority uint)
+        (category uint)
     )
     (let ((task-id (+ (var-get task-nonce) u1)))
         ;; Check title is not empty
@@ -130,6 +132,8 @@
             status: "open",
             submission: none,
             created-at: stacks-block-height,
+            priority: priority,
+            category: category,
         })
 
         ;; Increment nonce
