@@ -99,6 +99,27 @@
     bool
 )
 
+;; Access control roles
+(define-map user-roles
+    principal
+    { role: (string-ascii 20), permissions: uint }
+)
+
+;; Rate limiting
+(define-map user-actions
+    { user: principal, action: (string-ascii 20) }
+    { count: uint, last-action: uint }
+)
+
+;; Contract pause state
+(define-data-var contract-paused bool false)
+
+;; Emergency recovery
+(define-map emergency-funds
+    principal
+    uint
+)
+
 ;; Task milestones
 (define-map task-milestones
     { task-id: uint, milestone-index: uint }
