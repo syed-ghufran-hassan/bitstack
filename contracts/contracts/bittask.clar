@@ -46,7 +46,45 @@
         status: (string-ascii 20), ;; "open", "in-progress", "submitted", "completed", "disputed"
         submission: (optional (string-ascii 256)), ;; Proof of work link/hash
         created-at: uint,
+        priority: uint, ;; 0=low, 1=normal, 2=high
+        category: uint, ;; 0=design, 1=dev, 2=marketing, etc.
     }
+)
+
+;; Partial payment tracking
+(define-map partial-payments
+    uint ;; Task ID
+    uint ;; Amount paid so far
+)
+
+;; Payment history
+(define-map payment-history
+    { task-id: uint, payment-index: uint }
+    { amount: uint, timestamp: uint, payer: principal }
+)
+
+;; Task ratings
+(define-map task-ratings
+    uint ;; Task ID
+    { rating: uint, reviewer: principal }
+)
+
+;; Task templates
+(define-map task-templates
+    uint ;; Template ID
+    { title: (string-ascii 50), description: (string-ascii 256), category: uint }
+)
+
+;; Task milestones
+(define-map task-milestones
+    { task-id: uint, milestone-index: uint }
+    { description: (string-ascii 100), amount: uint, completed: bool }
+)
+
+;; Task collaborators
+(define-map task-collaborators
+    { task-id: uint, collaborator: principal }
+    bool
 )
 
 ;; Public Functions
