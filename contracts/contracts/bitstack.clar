@@ -81,10 +81,22 @@
     { title: (string-ascii 50), description: (string-ascii 256), category: uint, default-amount: uint }
 )
 
-;; Task dependencies
-(define-map task-dependencies
-    uint ;; Task ID
-    (list 10 uint) ;; List of prerequisite task IDs
+;; Batch tasks
+(define-map batch-tasks
+    uint ;; Batch ID
+    { creator: principal, task-ids: (list 20 uint), total-amount: uint }
+)
+
+;; Task revisions
+(define-map task-revisions
+    { task-id: uint, revision-index: uint }
+    { description: (string-ascii 256), requested-by: principal, timestamp: uint }
+)
+
+;; User bookmarks
+(define-map user-bookmarks
+    { user: principal, task-id: uint }
+    bool
 )
 
 ;; Task milestones
