@@ -366,6 +366,16 @@
     )
 )
 
+;; @desc Rate a completed task
+(define-public (rate-task (task-id uint) (rating uint))
+    (let ((task (unwrap! (map-get? Tasks task-id) ERR-INVALID-ID)))
+        (asserts! (is-eq tx-sender (get creator task)) ERR-NOT-CREATOR)
+        (asserts! (is-eq (get status task) "completed") ERR-NOT-SUBMITTED)
+        (map-set task-ratings task-id { rating: rating, reviewer: tx-sender })
+        (ok true)
+    )
+)
+
 ;; @desc Check if a task has expired
 ;; @param task-id uint - ID of the task to check
 (define-read-only (is-task-expired (task-id uint))
