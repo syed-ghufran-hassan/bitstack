@@ -324,6 +324,15 @@
     )
 )
 
+;; @desc Check if a task has expired
+;; @param task-id uint - ID of the task to check
+(define-read-only (is-task-expired (task-id uint))
+    (match (map-get? Tasks task-id)
+        task (> stacks-block-height (get deadline task))
+        false
+    )
+)
+
 ;; Read-only functions
 
 (define-read-only (get-task (id uint))
