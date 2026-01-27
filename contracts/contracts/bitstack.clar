@@ -69,14 +69,23 @@
     { rating: uint, reviewer: principal }
 )
 
+;; Task dependencies
+(define-map task-dependencies
+    uint ;; Task ID
+    (list 10 uint) ;; List of prerequisite task IDs
+)
+
 ;; Task templates
 (define-map task-templates
     uint ;; Template ID
     { title: (string-ascii 50), description: (string-ascii 256), category: uint, default-amount: uint }
 )
 
-;; Template nonce
-(define-data-var template-nonce uint u0)
+;; Task dependencies
+(define-map task-dependencies
+    uint ;; Task ID
+    (list 10 uint) ;; List of prerequisite task IDs
+)
 
 ;; Task milestones
 (define-map task-milestones
