@@ -262,7 +262,7 @@
     )
 )
 
-;; @desc Approve work and release payment to worker
+;; @desc Approve work and release payment to worker (milestone-aware)
 ;; @param id uint - Task ID
 (define-public (approve-work (id uint))
     (let ((task (unwrap! (map-get? Tasks id) ERR-INVALID-ID)))
@@ -274,16 +274,20 @@
 
         ;; Get worker principal
         (let ((worker-principal (unwrap! (get worker task) ERR-NOT-WORKER)))
-            ;; Update task status before transfer to prevent re-entrancy attacks
-            ;; Following Checks-Effects-Interactions pattern: update state (Effect) before external call (Interaction)
-            (map-set Tasks id
-                (merge task {
-                    status: "completed",
-                })
+            
+            ;; Check milestones
+            (let ((milestone-list (map-get-many task-milestones (list { task-id: id, milestone-index: u0 }))))
+                ;; If task has milestones, ensure all are completed
+                (define-fun all-milestones-completed? (milestone-list (list 10 { description: (string-ascii 100), amount: uint, completed: bool })) bool
+                    (fold (lambda (m acc) (and acc (get completed m))) true milestone-list)
+                )
+                (asserts! (or (is-eq (len milestone-list) u0) (all-milestones-completed? milestone-list)) ERR-TASK-EXPIRED)
             )
 
-            ;; Transfer STX from contract to worker
-            ;; If transfer fails, entire transaction (including state change) will be reverted
+            ;; Update task status before transfer to prevent re-entrancy
+            (map-set Tasks id (merge task { status: "completed" }))
+
+            ;; Transfer remaining STX from contract to worker
             (try! (as-contract (stx-transfer? (get amount task) tx-sender worker-principal)))
 
             ;; Emit event
@@ -292,10 +296,58 @@
                 id: id,
                 creator: tx-sender,
                 worker: worker-principal,
-                amount: (get amount task),
+                amount: (get amount task)
             })
 
             (ok true)
+        )
+    )
+)
+
+
+;; @desc Release payment for a specific milestone of a task
+;; @param task-id uint - Task ID
+;; @param milestone-index uint - Milestone index to release payment for
+(define-public (release-milestone-payment (task-id uint) (milestone-index uint))
+    (let ((task (unwrap! (map-get? Tasks task-id) ERR-INVALID-ID)))
+        ;; Only creator can release milestone payments
+        (asserts! (is-eq tx-sender (get creator task)) ERR-NOT-CREATOR)
+        
+        ;; Check task is in-progress or submitted
+        (asserts! (or (is-eq (get status task) "in-progress")
+                     (is-eq (get status task) "submitted")) ERR-NOT-IN-PROGRESS)
+
+        ;; Get milestone
+        (let ((milestone (unwrap! (map-get? task-milestones { task-id: task-id, milestone-index: milestone-index }) ERR-INVALID-ID)))
+            
+            ;; Check if milestone is already completed
+            (asserts! (not (get completed milestone)) ERR-ALREADY-COMPLETED)
+
+            ;; Get worker principal
+            (let ((worker-principal (unwrap! (get worker task) ERR-NOT-WORKER)))
+                
+                ;; Mark milestone as completed
+                (map-set task-milestones { task-id: task-id, milestone-index: milestone-index }
+                    (merge milestone { completed: true }))
+
+                ;; Update partial payments
+                (let ((paid-so-far (default-to u0 (map-get? partial-payments task-id))))
+                    (map-set partial-payments task-id (+ paid-so-far (get amount milestone))))
+
+                ;; Transfer milestone amount to worker
+                (try! (as-contract (stx-transfer? (get amount milestone) tx-sender worker-principal)))
+
+                ;; Emit event
+                (print {
+                    event: "milestone-paid",
+                    task-id: task-id,
+                    milestone-index: milestone-index,
+                    amount: (get amount milestone),
+                    worker: worker-principal
+                })
+
+                (ok true)
+            )
         )
     )
 )
